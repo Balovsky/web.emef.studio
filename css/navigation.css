@@ -253,7 +253,7 @@ align-items: center;
   .mobileMenu{
     width: 100vw;
     height: calc(100vh - 10vh);
-    background: #CCF381;
+    background: #FDFDFD;
     position: fixed;
     visibility: visible;
     transform: translateX(100%);
@@ -265,6 +265,62 @@ align-items: center;
     transition: all 0.3s ease;
     transform: translateX(0);
   }
+  .arrowUp{
+    width: 64px;
+    height: 64px;
+    /* background: red; */
+    position: fixed;
+    bottom: 50%;
+    right: 40px;
+    transform: rotate(90deg) translateX(50%);
+    object-fit: contain;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+  /* .arrowUp img{
+    width: 100%;
+  } */
+   .arrowUp::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: url(../assets/left-arrow.png);
+    transition: all 0.3s ease;
+    opacity: 1;
+
+   }
+   .arrowUp::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: url(../assets/left-arrow\ bg.png);
+    opacity: 0;
+    transform: translateX(10px);
+    transition: all 0.3s ease;
+    /* object-fit: cover; */
+    /* z-index: 999; */
+   }
+   .arrowUp:hover::before{
+    opacity: 0;
+    transform: translateX(10px);
+   }
+   .arrowUp:hover::after{
+    opacity: 1;
+    transform: translateX(0);
+   }
+
+   .show{
+    opacity: 1;
+   }
+
+  
 /* ###############TABLET################## */
 @media (max-width: 1366px) {
     .subpages, .year{
@@ -287,6 +343,36 @@ align-items: center;
         /* flex: 1; */
         justify-content: center;
         align-items: center;
+    }
+    .mobileSubpages{
+        /* width: 400px; */
+        margin: 0 auto;
+        /* width: 100%; */
+        /* height: 100%; */
+        /* background: red; */
+        z-index: 999;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        /* align-items: center; */
+        font-family: "Bebas Neue", sans-serif;
+    }
+    .mobileSubpage{
+        display: flex;
+        font-size: 38px;
+        margin-bottom: 20px;
+    }
+    .mobileSubpage img {
+        width: 30px;
+        object-fit: contain;
+    }
+    .mobileSubpageTitile{
+        padding: 5px 10px;
+        transition: all 0.3s ease;
+    }
+    .mobileSubpageTitile:hover{
+        transform: translateY(5px);
+        color:#7D287E;
     }
 }
 
