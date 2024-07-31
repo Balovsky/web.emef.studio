@@ -1,0 +1,316 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    
+    /* overflow: hidden; */
+}
+
+body::-webkit-scrollbar {
+    display: none;
+    font-family: 'Lato', sans-serif;
+    /* overflow: auto; */
+    
+}
+body{
+    font-family: 'Lato', sans-serif;
+}
+.container{
+    width: 100%;
+}
+a {
+    color: inherit; /* Dziedziczenie koloru tekstu od rodzica */
+    text-decoration: none; /* Usunięcie podkreślenia */
+    background: none; /* Usunięcie tła */
+    border: none; /* Usunięcie ramki */
+    margin: 0; /* Usunięcie marginesów */
+    padding: 0; /* Usunięcie odstępów wewnętrznych */
+    font: inherit; /* Dziedziczenie stylów czcionki */
+    outline: none; /* Usunięcie obramowania focus */
+    cursor: pointer; /* Ustawienie kursora na rękę */
+}
+/* Globalny reset dla przycisków */
+button {
+    all: unset; /* Resetuje wszystkie style do wartości domyślnych */
+    display: inline-block; /* Przywraca inline-block, aby umożliwić ustawienie szerokości i wysokości */
+    margin: 0; /* Usuwa wszelkie marginesy */
+    padding: 0; /* Usuwa wszelkie wypełnienia */
+    border: none; /* Usuwa obramowanie */
+    background: none; /* Usuwa tło */
+    box-shadow: none; /* Usuwa wszelkie cienie */
+    color: inherit; /* Dziedziczy kolor tekstu od rodzica */
+    font: inherit; /* Dziedziczy wszystkie właściwości czcionki od rodzica */
+    text-align: inherit; /* Dziedziczy wyrównanie tekstu */
+    line-height: normal; /* Ustawia normalną wysokość linii */
+    vertical-align: middle; /* Wyrównuje elementy wewnątrz w środku */
+    appearance: none; /* Usuwa domyślny wygląd specyficzny dla systemu */
+    cursor: pointer; /* Ustawia kursor na wskaźnik */
+    user-select: none; /* Wyłącza zaznaczanie tekstu */
+    -webkit-tap-highlight-color: transparent; /* Usuwa podświetlenie przy kliknięciu na urządzeniach dotykowych */
+    outline: none; /* Usuwa obramowanie przy kliknięciu */
+}
+input, textarea, select, button {
+
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    background: none;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+
+}
+
+/* Dodatkowe resety dla bardziej specyficznych przypadków */
+button:focus {
+    outline: none; /* Usuwa obramowanie przy focusie */
+}
+
+button:active {
+    transform: none; /* Resetuje wszelkie transformacje */
+    box-shadow: none; /* Resetuje cienie przy aktywacji */
+}
+
+button::-moz-focus-inner {
+    border: 0; /* Usuwa obramowanie wewnętrzne w Firefox */
+    padding: 0; /* Usuwa wypełnienie wewnętrzne w Firefox */
+}
+.navigation{
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    height: 150px;
+    width: 100%;
+    border-bottom: 1px solid #EAEAEA;
+    display: flex;
+}
+.logoContainer{
+    flex: 1;
+    height: 100%;
+    /* background: pink; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+.homeBack{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0.5;
+    width: 50px;
+}
+.homeBack img{
+    /* width: 100%; */
+        width: 160px;
+    object-fit: contain;
+}
+/* .logoName{
+    font-size: 24px;
+} */
+.subpages{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 2;
+    font-size: 24px;
+}
+.subpage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 200;
+}
+.subpage:nth-child(1), .subpage:nth-child(2), .subpage:nth-child(3){
+    margin-right: 40px;
+}
+.subpageTitile{
+    margin-top: 6px;
+    padding-left: 5px;
+}
+.subpages img{
+    width: 20px;
+    /* margin-left: 15px; */
+}
+.year{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    font-size: 38px;
+    color: #7D287E;
+}
+
+
+.firstSection{
+    width: 100%;
+    height: 2000px;
+}
+.footerContainer{
+    width: 100%;
+    height: 300px;
+    background: #7D287E;
+    display: flex;
+}
+.footerLogo{
+    flex: 1;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.footerLogo img{
+    width: 180px;
+    object-fit: contain;
+}
+.footerSubpages{
+    flex: 2;
+    font-size: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 50px;
+    color: white;
+    font-family: 'Lato', sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+}
+.footerSocials{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.socialsTitile{
+    font-size: 28px;
+    color: white;
+    margin-bottom: 20px;
+
+}
+.footerSubpage:nth-child(1), .footerSubpage:nth-child(2), .footerSubpage:nth-child(3), .footerSubpage:nth-child(4){
+    margin-right: 10px;
+
+}
+.footerSubpage img {
+    width: 50px;
+}
+.hamburger{
+    
+    display: none;
+}
+.mobileMenu{
+    visibility: hidden;
+}
+.ham {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 400ms;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  .hamRotate.active {
+    transform: rotate(45deg);
+  }
+  .hamRotate180.active {
+    transform: rotate(180deg);
+  }
+  .line {
+    fill:none;
+    transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+    stroke:#000;
+    stroke-width:5.5;
+    stroke-linecap:round;
+  }
+
+.ham8 .top {
+    stroke-dasharray: 40 160;
+  }
+  .ham8 .middle {
+    stroke-dasharray: 40 142;
+    transform-origin: 50%;
+    transition: transform 400ms;
+  }
+  .ham8 .bottom {
+    stroke-dasharray: 40 85;
+    transform-origin: 50%;
+    transition: transform 400ms, stroke-dashoffset 400ms;
+  }
+  .ham8.active .top {
+    stroke-dashoffset: -64px;
+  }
+  .ham8.active .middle {
+    //stroke-dashoffset: -20px;
+    transform: rotate(90deg);
+  }
+  .ham8.active .bottom {
+    stroke-dashoffset: -64px;
+  }
+  .mobileMenu{
+    width: 100vw;
+    height: calc(100vh - 10vh);
+    background: #CCF381;
+    position: fixed;
+    visibility: visible;
+    transform: translateX(100%);
+    z-index: 999;
+    display: flex;
+    margin-top: 150px;
+  }
+  .active{
+    transition: all 0.3s ease;
+    transform: translateX(0);
+  }
+/* ###############TABLET################## */
+@media (max-width: 1366px) {
+    .subpages, .year{
+        display: none;
+    }
+    .navigation{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .logoContainer{
+        width: 50%;
+        /* flex: 1; */
+        flex:none
+        
+    }
+    .hamburger{
+        width: 20%;
+        display: flex;
+        /* flex: 1; */
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+/* *********** mobile view ********************************** */
+@media (max-width: 768px) {
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
