@@ -1,0 +1,202 @@
+.firstSection{
+    width: 100%;
+    height: calc(100vh - 150px);
+    /* background: pink; */
+    display: flex;
+    flex-direction: column;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 140px;
+    background: #FDFDFD;
+}
+.title{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+}
+.titleOutline{
+    font-size: 140px;
+    color: #FDFDFD; /* Kolor tekstu */
+    text-shadow:
+        1px 1px 0 #000, /* Cień w prawo i w dół */
+        -1px -1px 0 #000, /* Cień w lewo i w górę */
+        1px -1px 0 #000, /* Cień w prawo i w górę */
+        -1px 1px 0 #000; /* Cień w lewo i w dół */ 
+}
+.firstLine{
+    width: 100%;
+    height: 50px;
+    /* background: blue; */
+    flex: 1;
+    display: flex;
+    border-bottom: 2px solid #EAEAEA;
+    text-align: center;
+}
+.firstLineLeft{
+    flex: 2;
+    /* background: yellow; */
+}
+.firstLineCenter{
+    flex: 1.5;
+    /* background: darkcyan; */
+    border-left: 2px solid #EAEAEA;
+    border-right: 2px solid #EAEAEA;
+}
+.firstLineRight{
+    flex: 2;
+    /* background: darkorchid; */
+}
+
+.secondLine{
+    width: 100%;
+    height: 50px;
+    /* background: blue; */
+    flex: 1.1;
+    display: flex;
+    color: #7D287E;
+
+}
+.thirdLine{
+    width: 100%;
+    height: 50px;
+    /* background: blue; */
+    flex: 1;
+    display: flex;
+    border: 2px solid #EAEAEA;
+}
+.thirdLineLeft{
+    flex: 2;
+    /* background: yellow; */
+}
+.thirdLineCenter{
+    flex: 1.5;
+    /* background: darkcyan; */
+    border-left: 2px solid #EAEAEA;
+    border-right: 2px solid #EAEAEA;
+}
+.thirdLineRight{
+    flex: 2;
+    /* background: darkorchid; */
+}
+.secondLineLeft, .secondLineRight{
+    flex: 2;
+    /* background: darkslateblue; */
+}
+.secondLineCenter{
+    flex: 1.5;
+    /* background: yellow; */
+    border-left: 2px solid #EAEAEA;
+    border-right: 2px solid #EAEAEA;
+    
+}
+.titleMobile{
+    display: none;
+}
+.secondSection{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 8cap;
+    display: flex;
+}
+.photosContainer{
+    display: flex;
+    flex: 1;
+    /* background: pink; */
+    justify-content: space-around;
+    margin: 150px 0px 150px 0px;
+    flex-wrap: nowrap;
+}
+.webDesignImg{
+    width: 300px;
+}
+.webDesignImg img{
+    flex: 1;
+}
+.webDesignImg:nth-child(1), .webDesignImg:nth-child(3){
+    margin-top: 150px;
+}
+.webDesignImg:nth-child(2), .webDesignImg:nth-child(4){
+    margin-bottom: 150px;
+}
+/* .footerSocial{
+    width: 30px;
+}
+.footerSocial img{
+    width: 100%;
+} */
+
+
+
+/* ###############TABLET################## */
+@media (max-width: 1366px) {
+    .firstSection{
+        font-size: 100px;
+    }
+    .titleOutline{
+        font-size: 100px;
+    }
+    .secondSection{
+        width: 90%;
+    }
+    .photosContainer{
+        margin: 10px 0px 100px 0px;
+    }
+    .webDesignImg{
+        width: 180px;
+    }
+    
+}
+
+
+/* *********** mobile view ********************************** */
+@media (max-width: 768px) {
+    .firstSection{
+        font-size: 60px;
+    }
+    .titleOutline{
+        font-size: 60px;
+    }
+    .titleMobile{
+        display: flex;
+    }
+    .thirdLineRight, .firstLineRight{
+        display: none;
+    }
+    .firstLineCenter, .secondLineCenter, .thirdLineCenter{
+        flex: 1;
+    }
+    .firstLineLeft, .thirdLineLeft{
+        flex: 1;
+    }
+    .secondLineLeft, .secondLineCenter, .secondLineRight{
+        flex: 1;
+    }
+    .photosContainer{
+        display: flex;
+        flex: 1;
+        /* background: pink; */
+        flex-direction: column;
+        margin: 0;
+        align-items: center;
+    }
+    .webDesignImg{
+        width: 70%;
+    }
+    .webDesignImg:nth-child(1), .webDesignImg:nth-child(3){
+        margin-top: 0px;
+        margin-right: 80px;
+        margin-bottom: 80px;
+    }
+    .webDesignImg:nth-child(2), .webDesignImg:nth-child(4){
+        margin-bottom: 80px;
+        margin-left: 40px;
+    }
+    /* .webDesignImg{
+        
+    } */
+
+}
+@media (max-width: 480px) {
+
+}
