@@ -125,13 +125,11 @@
     width: 100%;
 } */
 
-
 .thirdSection {
     width: 80%;
     margin: 0 auto;
-    display: flex;
+    display: flex; 
     flex-direction: column;
-    position: relative;
 }
 
 .servicesTitle {
@@ -143,24 +141,20 @@
 }
 
 .servicesWrapper {
-    overflow: hidden; /* Ukrywa przewijające się elementy poza kontenerem */
-    width: 100%;
-    position: relative;
+    overflow: hidden;
 }
 
 .servicesContainer {
     display: flex;
-    width: calc(350px * 4 + 10px * 3); /* Szerokość kontenera uwzględniająca marginesy */
-    transition: transform 0.5s ease;
+    transition: transform 0.5s ease-in-out;
 }
 
 .service {
-    flex: 0 0 350px; /* Szerokość pojedynczego diva */
+    flex: 0 0 33.33%; /* Wyświetla 3 usługi jednocześnie */
     box-sizing: border-box;
     padding: 60px 40px;
     outline: 1px solid #EAEAEA;
-    margin-right: 10px;
-    margin-left: 100px; /* Margines między usługami */
+    margin-right: 10px; /* Margines między usługami */
 }
 
 .serviceTitle {
@@ -171,15 +165,6 @@
 .serviceDesc {
     font-size: 20px;
 }
-
-.arrowContainer {
-    margin: 20px 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    cursor: pointer;
-}
-
 
 
 
@@ -259,4 +244,52 @@
 }
 @media (max-width: 480px) {
 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.carousel-container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+}
+
+.carousel-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+    flex: 1 0 33.33%;
+    box-sizing: border-box;
+    padding: 20px;
+    background: white;
+    border: 1px solid #ddd;
+    text-align: center;
+    margin-right: 10px;
+}
+
+h2 {
+    margin-top: 0;
+}
+@media (pointer: coarse) {
+    .carousel {
+        touch-action: pan-x;
+    }
 }
