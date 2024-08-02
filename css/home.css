@@ -96,7 +96,6 @@
 .secondSection{
     width: 80%;
     margin: 0 auto;
-    margin-top: 8cap;
     display: flex;
 }
 .photosContainer{
@@ -125,6 +124,63 @@
 .footerSocial img{
     width: 100%;
 } */
+
+
+.thirdSection {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.servicesTitle {
+    font-size: 34px;
+    color: #7D287E;
+    font-weight: 600;
+    letter-spacing: 4px;
+    margin-bottom: 60px;
+}
+
+.servicesWrapper {
+    overflow: hidden; /* Ukrywa przewijające się elementy poza kontenerem */
+    width: 100%;
+    position: relative;
+}
+
+.servicesContainer {
+    display: flex;
+    width: calc(350px * 4 + 10px * 3); /* Szerokość kontenera uwzględniająca marginesy */
+    transition: transform 0.5s ease;
+}
+
+.service {
+    flex: 0 0 350px; /* Szerokość pojedynczego diva */
+    box-sizing: border-box;
+    padding: 60px 40px;
+    outline: 1px solid #EAEAEA;
+    margin-right: 10px;
+    margin-left: 100px; /* Margines między usługami */
+}
+
+.serviceTitle {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.serviceDesc {
+    font-size: 20px;
+}
+
+.arrowContainer {
+    margin: 20px 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+
 
 
 
@@ -195,6 +251,10 @@
     /* .webDesignImg{
         
     } */
+     .service{
+        flex: 0 0 1;
+        margin-left: 0px;
+     }
 
 }
 @media (max-width: 480px) {
