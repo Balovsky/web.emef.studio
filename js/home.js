@@ -1,139 +1,174 @@
-// // script.js
-// const servicesContainer = document.querySelector('.servicesContainer');
-// const totalServices = document.querySelectorAll('.service').length;
-// const serviceWidth = 350; // Szerokość pojedynczej usługi
-// const serviceMargin = 10; // Margines między usługami
-// const containerWidth = serviceWidth + serviceMargin; // Szerokość jednej usługi z marginesem
-// let currentIndex = 0;
+// document.addEventListener('DOMContentLoaded', function() {
+//     const track = document.querySelector('.carousel-track');
+//     const items = document.querySelectorAll('.carousel-item');
+//     const dots = document.querySelectorAll('.dot');
+//     let currentIndex = 0;
+//     let autoScrollInterval;
+//     let startX = 0;
+//     let currentX = 0;
 
-// // Automatyczne przewijanie
-// function autoScroll() {
-//     currentIndex = (currentIndex + 1) % totalServices; // Przewija przez wszystkie usługi
-//     servicesContainer.style.transform = `translateX(-${currentIndex * containerWidth}px)`;
-// }
-
-// // Ustawienie automatycznego przewijania co 3 sekundy
-// let scrollInterval = setInterval(autoScroll, 3000);
-
-// // Obsługa przycisków przewijania
-// document.querySelector('.arrowLeft').addEventListener('click', () => {
-//     clearInterval(scrollInterval);
-//     currentIndex = (currentIndex - 1 + totalServices) % totalServices; // Przewija w lewo przez wszystkie usługi
-//     servicesContainer.style.transform = `translateX(-${currentIndex * containerWidth}px)`;
-//     scrollInterval = setInterval(autoScroll, 3000);
-// });
-
-// document.querySelector('.arrowRight').addEventListener('click', () => {
-//     clearInterval(scrollInterval);
-//     currentIndex = (currentIndex + 1) % totalServices; // Przewija w prawo przez wszystkie usługi
-//     servicesContainer.style.transform = `translateX(-${currentIndex * containerWidth}px)`;
-//     scrollInterval = setInterval(autoScroll, 3000);
-// });
+//     function updateCarousel() {
+//         const itemWidth = items[0].getBoundingClientRect().width;
+//         const offset = -currentIndex * itemWidth;
+//         track.style.transform = `translateX(${offset}px)`;
+//     }
 
 
-// const servicesContainer = document.querySelector('.servicesContainer');
-// const totalServices = document.querySelectorAll('.service').length;
-// const serviceWidth = document.querySelector('.service').offsetWidth;
-// const serviceMargin = 10; // Margines między usługami
-// const containerWidth = serviceWidth + serviceMargin;
-// let currentIndex = 0;
+//     function startAutoScroll() {
+//         stopAutoScroll(); // Zapobiega uruchomieniu wielu interwałów
+//         autoScrollInterval = setInterval(function() {
+//             currentIndex = (currentIndex + 1) % items.length;
+//             updateCarousel();
+//         }, 2500);
+//     }
 
-// // Automatyczne przewijanie
-// function autoScroll() {
-//     currentIndex = (currentIndex + 1) % totalServices; // Przewija przez wszystkie usługi
-//     servicesContainer.style.transform = `translateX(-${currentIndex * containerWidth}px)`;
-// }
+//     function stopAutoScroll() {
+//         clearInterval(autoScrollInterval);
+//     }
 
-// // Ustawienie automatycznego przewijania co 3 sekundy
-// let scrollInterval = setInterval(autoScroll, 3000);
+//     dots.forEach(dot => {
+//         dot.addEventListener('click', function() {
+//             stopAutoScroll();
+//             currentIndex = parseInt(this.getAttribute('data-index'));
+//             updateCarousel();
+//             startAutoScroll();
+//         });
+//     });
 
-// // Obsługa przycisków przewijania
-// document.querySelector('.arrowLeft').addEventListener('click', () => {
-//     clearInterval(scrollInterval);
-//     currentIndex = (currentIndex - 1 + totalServices) % totalServices; // Przewija w lewo przez wszystkie usługi
-//     servicesContainer.style.transform = `translateX(-${currentIndex * containerWidth}px)`;
-//     scrollInterval = setInterval(autoScroll, 3000);
-// });
+//     function handleTouchStart(event) {
+//         stopAutoScroll();
+//         startX = event.touches[0].clientX;
+//         currentX = startX;
+//     }
 
-// document.querySelector('.arrowRight').addEventListener('click', () => {
-//     clearInterval(scrollInterval);
-//     currentIndex = (currentIndex + 1) % totalServices; // Przewija w prawo przez wszystkie usługi
-//     servicesContainer.style.transform = `translateX(-${currentIndex * containerWidth}px)`;
-//     scrollInterval = setInterval(autoScroll, 3000);
-// });
+//     function handleTouchMove(event) {
+//         currentX = event.touches[0].clientX;
+//     }
 
-// // Obsługa dotyku na urządzeniach mobilnych
-// let startX;
-// let currentTranslateX = 0;
+//     function handleTouchEnd(event) {
+//         const threshold = 50;
+//         if (startX - currentX > threshold) {
+//             currentIndex = (currentIndex + 1) % items.length;
+//         } else if (currentX - startX > threshold) {
+//             currentIndex = (currentIndex - 1 + items.length) % items.length;
+//         }
+//         updateCarousel();
+//         startAutoScroll();
+//     }
 
-// servicesContainer.addEventListener('touchstart', (e) => {
-//     startX = e.touches[0].clientX;
-//     clearInterval(scrollInterval);
-// });
+//     track.addEventListener('touchstart', handleTouchStart);
+//     track.addEventListener('touchmove', handleTouchMove);
+//     track.addEventListener('touchend', handleTouchEnd);
 
-// servicesContainer.addEventListener('touchmove', (e) => {
-//     const touchX = e.touches[0].clientX;
-//     const diffX = startX - touchX;
-//     servicesContainer.style.transform = `translateX(${currentTranslateX - diffX}px)`;
-// });
+//     // Rozpocznij automatyczne przewijanie po załadowaniu strony
+//     startAutoScroll();
 
-// servicesContainer.addEventListener('touchend', (e) => {
-//     const touchX = e.changedTouches[0].clientX;
-//     const diffX = startX - touchX;
-//     currentIndex = (currentIndex + Math.round(diffX / containerWidth)) % totalServices;
-//     currentIndex = (currentIndex + totalServices) % totalServices; // Ensure positive index
-//     servicesContainer.style.transition = 'transform 0.5s ease-in-out';
-//     servicesContainer.style.transform = `translateX(-${currentIndex * containerWidth}px)`;
-//     currentTranslateX = -currentIndex * containerWidth;
-//     scrollInterval = setInterval(autoScroll, 3000);
+//     // Zatrzymaj automatyczne przewijanie, gdy myszka najeżdża na karuzelę (opcjonalnie)
+//     track.addEventListener('mouseover', stopAutoScroll);
+//     track.addEventListener('mouseout', startAutoScroll);
+
+//     // Dodaj listenera dla zmiany rozmiaru okna, aby ponownie ustawić szerokość elementów
+//     window.addEventListener('resize', function() {
+//         updateCarousel();
+//     });
+
+//     // Zaktualizuj karuzelę przy pierwszym załadowaniu
+//     updateCarousel();
+
+//     const upArrow = document.querySelector('.upArrow');
+
+//     // Funkcja, która pokazuje lub ukrywa przycisk w zależności od przewinięcia
+    
+//     // Nasłuchujemy na zdarzenie scroll i kliknięcie
+
+
+    
 // });
 
 
-const carouselWrapper = document.querySelector('.carousel-wrapper');
-const carouselItems = document.querySelectorAll('.carousel-item');
-const totalItems = carouselItems.length;
-const visibleItems = 3;
-let index = 0;
-let startX, endX;
 
-// Funkcja do przesuwania karuzeli
-function moveToNextSlide() {
-    index++;
-    if (index > totalItems - visibleItems) {
-        index = 0;
+document.addEventListener('DOMContentLoaded', function() {
+    const track = document.querySelector('.carousel-track');
+    const items = document.querySelectorAll('.carousel-item');
+    const dots = document.querySelectorAll('.dot');
+    const arrowLeft = document.querySelector('.arrowLeft');
+    const arrowRight = document.querySelector('.arrowRight');
+    let currentIndex = 0;
+    let autoScrollInterval;
+    let startX = 0;
+    let currentX = 0;
+
+    function updateCarousel() {
+        const itemWidth = items[0].getBoundingClientRect().width;
+        const offset = -currentIndex * itemWidth;
+        track.style.transform = `translateX(${offset}px)`;
     }
-    const offset = -(index * 100 / visibleItems) + '%';
-    carouselWrapper.style.transform = `translateX(${offset})`;
-}
 
-// Funkcja do obsługi dotyku
-function handleTouchStart(event) {
-    startX = event.touches[0].clientX;
-}
+    function startAutoScroll() {
+        stopAutoScroll(); // Zapobiega uruchomieniu wielu interwałów
+        autoScrollInterval = setInterval(function() {
+            currentIndex = (currentIndex + 1) % items.length;
+            updateCarousel();
+        }, 2500);
+    }
 
-function handleTouchMove(event) {
-    if (!startX) return;
-    endX = event.touches[0].clientX;
-    const diffX = startX - endX;
-    if (Math.abs(diffX) > 50) {
-        if (diffX > 0) {
-            moveToNextSlide();
-        } else {
-            index--;
-            if (index < 0) {
-                index = totalItems - visibleItems;
-            }
-            const offset = -(index * 100 / visibleItems) + '%';
-            carouselWrapper.style.transform = `translateX(${offset})`;
+    function stopAutoScroll() {
+        clearInterval(autoScrollInterval);
+    }
+
+
+    function handleTouchStart(event) {
+        stopAutoScroll();
+        startX = event.touches[0].clientX;
+        currentX = startX;
+    }
+
+    function handleTouchMove(event) {
+        currentX = event.touches[0].clientX;
+    }
+
+    function handleTouchEnd(event) {
+        const threshold = 50;
+        if (startX - currentX > threshold) {
+            currentIndex = (currentIndex + 1) % items.length;
+        } else if (currentX - startX > threshold) {
+            currentIndex = (currentIndex - 1 + items.length) % items.length;
         }
-        startX = null;  // Reset startX after handling swipe
+        updateCarousel();
+        startAutoScroll();
     }
-}
 
-carouselWrapper.addEventListener('touchstart', handleTouchStart);
-carouselWrapper.addEventListener('touchmove', handleTouchMove);
+    track.addEventListener('touchstart', handleTouchStart);
+    track.addEventListener('touchmove', handleTouchMove);
+    track.addEventListener('touchend', handleTouchEnd);
 
-// Automatyczne przewijanie co 3 sekundy
-setInterval(moveToNextSlide, 3000);
+    // Dodaj funkcjonalność strzałek
+    arrowLeft.addEventListener('click', () => {
+        stopAutoScroll();
+        currentIndex = (currentIndex - 1 + items.length) % items.length;
+        updateCarousel();
+        startAutoScroll();
+    });
 
+    arrowRight.addEventListener('click', () => {
+        stopAutoScroll();
+        currentIndex = (currentIndex + 1) % items.length;
+        updateCarousel();
+        startAutoScroll();
+    });
 
+    // Rozpocznij automatyczne przewijanie po załadowaniu strony
+    startAutoScroll();
+
+    // Zatrzymaj automatyczne przewijanie, gdy myszka najeżdża na karuzelę (opcjonalnie)
+    track.addEventListener('mouseover', stopAutoScroll);
+    track.addEventListener('mouseout', startAutoScroll);
+
+    // Dodaj listenera dla zmiany rozmiaru okna, aby ponownie ustawić szerokość elementów
+    window.addEventListener('resize', function() {
+        updateCarousel();
+    });
+
+    // Zaktualizuj karuzelę przy pierwszym załadowaniu
+    updateCarousel();
+});
