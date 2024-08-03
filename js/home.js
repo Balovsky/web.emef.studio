@@ -171,4 +171,44 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Zaktualizuj karuzelę przy pierwszym załadowaniu
     updateCarousel();
+
+
+    const form = document.getElementById('contactForm');
+    const popup = document.getElementById('popup');
+    const closeBtn = document.querySelector('.close-btn');
+
+    form.addEventListener('submit', async function(event) {
+        event.preventDefault(); // Zatrzymuje domyślną akcję formularza
+
+        // Przygotowanie danych formularza
+        const formData = new FormData(form);
+
+        // Wysyłanie danych formularza do Netlify
+        try {
+            await fetch(form.action, {
+                method: 'POST',
+                body: formData
+            });
+
+            // Wyświetlanie popupu po pomyślnym wysłaniu formularza
+            popup.style.display = 'flex';
+        } catch (error) {
+            console.error('Błąd podczas wysyłania formularza:', error);
+        }
+
+        // Resetowanie formularza
+        form.reset();
+    });
+
+    closeBtn.addEventListener('click', function() {
+        popup.style.display = 'none'; // Ukrywa popup po kliknięciu na przycisk zamknięcia
+    });
+
+    // Ukrywanie popupu klikając poza jego obszarem
+    window.addEventListener('click', function(event) {
+        if (event.target === popup) {
+            popup.style.display = 'none';
+        }
+    });
+
 });
