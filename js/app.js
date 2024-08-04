@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger');
     const mobileMenu = document.querySelector('.mobileMenu');
     const navContainer = document.querySelector('.container');
+    const menuBtns = document.querySelectorAll('.mobileSubpage');
+    const test = document.querySelector('.ham8');
 
     hamburger.addEventListener('click', function() {
         mobileMenu.classList.toggle('active');
@@ -23,6 +25,13 @@ const upArrow = document.querySelector('.arrowUp');
             upArrow.classList.remove('show');
         }
     }
+    menuBtns.forEach(menubutton =>{
+        menubutton.addEventListener('click', ()=>{
+            mobileMenu.classList.toggle('active')
+            test.classList.toggle('active')
+        navContainer.style.position = 'relative'
+        })
+    })
 
     // Funkcja, która przewija stronę do góry po kliknięciu
     function scrollToTop() {
